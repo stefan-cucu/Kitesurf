@@ -39,3 +39,12 @@ body {
   font-size: 28px;
   font-weight: 500;
 }
+
+.button:hover {
+  /* transform: translateY(-2px); */
+  background-color: #0068b5;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
