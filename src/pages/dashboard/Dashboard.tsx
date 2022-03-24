@@ -4,6 +4,7 @@
 import React from "react";
 import { User, logIn, selectUser, logOut } from "../../store/User";
 import { useDispatch, useSelector } from "react-redux";
+import Map from "../../components/map/Map";
 import "./Dashboard.css";
 
 const Dashboard: React.FC = () => {
@@ -24,6 +25,7 @@ const Dashboard: React.FC = () => {
           <h1 className="logo">Kite</h1>
           <button className="button" onClick={()=>dispatch(logOut())}>Logout</button>
         </div>
+        <Map />
       </div>
     </div>
   );
