@@ -23,9 +23,13 @@ const Dashboard: React.FC = () => {
       <div className="dashboard-container">
         <div className="dashboard-header">
           <h1 className="logo">Kite</h1>
-          <button className="button" onClick={()=>dispatch(logOut())}>Logout</button>
+          <button className="button" onClick={() => dispatch(logOut())}>
+            Logout
+          </button>
         </div>
-        <Map />
+        <div className="map-container">
+          <Map />
+        </div>
       </div>
     </div>
   );

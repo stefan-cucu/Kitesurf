@@ -5,3 +5,7 @@
     justify-content: space-between;
     width: 100%;
 }
+
+.map-container {
+    position: relative;
+}

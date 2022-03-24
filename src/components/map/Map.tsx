@@ -6,6 +6,7 @@ import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpots, loadSpots, Spot } from "../../store/Spot";
 import LocationPopup from "../locationPopup/LocationPopup";
+import Filter from "../filter/Filter";
 
 const { REACT_APP_MAPS_KEY } = process.env;
 
@@ -35,6 +36,10 @@ const Map: React.FC = (props) => {
   const [showPopup, setShowPopup] = React.useState(false);
   const [selectedSpot, setSelectedSpot] = React.useState(0);
 
+  const [filterCountry, setFilterCountry] = React.useState("");
+  const [filterProb, setFilterProb] = React.useState(0);
+  const [isFiltered, setIsFiltered] = React.useState(false);
+
   // Load the Google Maps API
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -60,43 +65,61 @@ const Map: React.FC = (props) => {
   return (
     <>
       {isLoaded && (
-        <GoogleMap
-          id="map"
-          mapContainerStyle={mapStyle}
-          zoom={8}
-          center={defaultCenter}
-          options={options}
-          onLoad={onMapLoad}
-        >
-          {
-            // Add the markers
-            spots.map((spot: Spot, index: number) => (
-              <Marker
-                key={spot.id}
-                position={{
-                  lat: parseFloat(spot.lat),
-                  lng: parseFloat(spot.long),
-                }}
-                icon={{
-                  // Set marker color based on favorite status
-                  url: spot.isFavorite
-                    ? "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
-                    : "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-                  scaledSize: new window.google.maps.Size(50, 50),
-                }}
-                onClick={() => {
-                  setShowPopup(true);
-                  setSelectedSpot(index);
-                }}
-              />
-            ))
-          }
-          <LocationPopup
-            display={showPopup}
-            setDisplay={setShowPopup}
-            spot={spots[selectedSpot]}
+        <>
+          <GoogleMap
+            id="map"
+            mapContainerStyle={mapStyle}
+            zoom={8}
+            center={defaultCenter}
+            options={options}
+            onLoad={onMapLoad}
+          >
+            {
+              spots // Filter the spots based on the filter settings
+                .filter((spot: Spot) => {
+                  if (!isFiltered) return true;
+                  else if (filterCountry !== "")
+                    return (
+                      spot.country === filterCountry &&
+                      spot.probability >= filterProb
+                    );
+                  else return spot.probability >= filterProb;
+                }) // Render the spots
+                .map((spot: Spot, index: number) => (
+                  <Marker
+                    key={spot.id}
+                    position={{
+                      lat: parseFloat(spot.lat),
+                      lng: parseFloat(spot.long),
+                    }}
+                    icon={{
+                      // Set marker color based on favorite status
+                      url: spot.isFavorite
+                        ? "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+                        : "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+                      scaledSize: new window.google.maps.Size(50, 50),
+                    }}
+                    onClick={() => {
+                      setShowPopup(true);
+                      setSelectedSpot(index);
+                    }}
+                  />
+                ))
+            }
+            <LocationPopup
+              display={showPopup}
+              setDisplay={setShowPopup}
+              spot={spots[selectedSpot]}
+            />
+          </GoogleMap>
+          <Filter
+            country={filterCountry}
+            setCountry={setFilterCountry}
+            probability={filterProb}
+            setProbability={setFilterProb}
+            setFiltered={setIsFiltered}
           />
-        </GoogleMap>
+        </>
       )}
     </>
   );
