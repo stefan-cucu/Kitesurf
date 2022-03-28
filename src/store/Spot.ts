@@ -13,19 +13,7 @@ export interface Spot {
   lat: string;
   long: string;
   probability: number;
-  month:
-    | "January"
-    | "February"
-    | "March"
-    | "April"
-    | "May"
-    | "June"
-    | "July"
-    | "August"
-    | "September"
-    | "October"
-    | "November"
-    | "December";
+  month: string;
   isFavorite: boolean;
   favoriteId: string;
 }
@@ -69,6 +57,21 @@ export const loadSpots = createAsyncThunk("spot/loadSpots", async () => {
     }
   }
   return spots;
+});
+
+// Function to add a spot to the server
+export const addSpot = createAsyncThunk("spot/addSpot", async (spot: Spot) => {
+  // Add spot to the server
+  const postResponse = await fetch(`${REACT_APP_MOCKUP_API}/spot`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(spot),
+  });
+  if (!postResponse.ok) throw new Error(postResponse.statusText);
+  const newSpot: Spot = await postResponse.json();
+  return newSpot;
 });
 
 // Function to add a favorite spot
@@ -126,6 +129,10 @@ export const spotSlice = createSlice({
     });
     builder.addCase(loadSpots.pending, (state, action) => {
       state.status = "loading";
+    });
+    // Handle spot add
+    builder.addCase(addSpot.fulfilled, (state, action) => {
+      state.spots.push(action.payload);
     });
     // Set spot as favorite in the state
     builder.addCase(addFavoriteSpot.fulfilled, (state, action) => {
