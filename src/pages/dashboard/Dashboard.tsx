@@ -6,6 +6,7 @@ import { User, logIn, selectUser, logOut } from "../../store/User";
 import { useDispatch, useSelector } from "react-redux";
 import Map from "../../components/map/Map";
 import AddSpotModal from "../../components/addSpotModal/AddSpotModal";
+import Profile from "../../components/profile/Profile";
 import "./Dashboard.css";
 
 const Dashboard: React.FC = () => {
@@ -30,9 +31,7 @@ const Dashboard: React.FC = () => {
             <button className="button" onClick={() => {setShowAddSpotModal(true)}}>
               Add spot
             </button>
-            <button className="button" onClick={() => dispatch(logOut())}>
-              Logout
-            </button>
+            <Profile /> 
           </div>
         </div>
         <div className="map-container">

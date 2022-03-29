@@ -1,6 +1,9 @@
+/*
+ * Custom component for the add spot modal
+ */
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addSpot, getSpots, loadSpots, Spot } from "../../store/Spot";
+import { useDispatch } from "react-redux";
+import { addSpot, Spot } from "../../store/Spot";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 
 import * as DateToMonthMap from "./DateToMonthMap.json";
@@ -70,7 +73,7 @@ const AddSpotModal: React.FC<AddSpotModalProps> = (props) => {
       lat: String(location.lat),
       long: String(location.lng),
       probability: prob,
-      month: lastMonth,
+      month: firstMonth + "-" + lastMonth,
       isFavorite: false,
       favoriteId: "",
     };
