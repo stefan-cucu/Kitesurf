@@ -2,9 +2,8 @@
  * Custom component for the dashboard page
  */
 import React from "react";
-import { User, logIn, selectUser, logOut } from "../../store/User";
-import { getSpots } from "../../store/Spot";
-import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../store/User";
+import { useSelector } from "react-redux";
 import Map from "../../components/map/Map";
 import AddSpotModal from "../../components/addSpotModal/AddSpotModal";
 import Profile from "../../components/profile/Profile";
@@ -13,9 +12,7 @@ import SearchImg from "../../assets/search.svg";
 import "./Dashboard.css";
 
 const Dashboard: React.FC = () => {
-  const dispatch = useDispatch();
   const currentUser = useSelector(selectUser);
-  const spots = useSelector(getSpots);
 
   const [showAddSpotModal, setShowAddSpotModal] = React.useState(false);
   const [locationFilter, setLocationFilter] = React.useState("");

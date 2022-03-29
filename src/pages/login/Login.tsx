@@ -37,7 +37,7 @@ const Login: React.FC = () => {
   }, [currentUser]);
 
   return (
-    <div className="page">
+    <div className="page login-page">
       <form className="login-container" onSubmit={handleSubmit}>
         <h1 className="logo">Kite</h1>
         <label htmlFor="username">Username:</label>

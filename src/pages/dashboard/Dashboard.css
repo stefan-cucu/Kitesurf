@@ -14,8 +14,35 @@
   width: 20%;
 }
 
+@media (max-width: 450px) {
+  .dashboard-header-right {
+    width: 40%;
+  }
+
+  .dashboard-header-right > img {
+    height: 10px;
+    width: 10px;
+  }
+
+  .dashboard-header-right > button {
+    width: 50%;
+    font-size: 100%;
+  }
+}
+.dashboard-header-right > button {
+  width: 50%;
+  font-size: 125%;
+}
+
 .map-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-container > h2 {
+  align-self: flex-start;
 }
 
 .search-bar {
@@ -28,6 +55,12 @@
   width: 360px;
   height: 45px;
   margin-bottom: 30px;
+}
+
+@media (max-width: 450px) {
+  .search-bar {
+    width: 80%;
+  }
 }
 
 .search-bar > input {

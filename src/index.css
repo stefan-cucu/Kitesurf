@@ -24,7 +24,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+}
+
+@media (min-height: 1000px) {
+  .page {
+    height: 100vh;
+  }
 }
 
 .button { 
@@ -38,6 +43,12 @@ body {
   color: #FFF;
   font-size: 28px;
   font-weight: 500;
+}
+
+@media (max-width: 450px) {
+  .button {
+    width: 100px;
+  }
 }
 
 .button:hover {

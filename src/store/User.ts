@@ -49,6 +49,12 @@ export const logIn = createAsyncThunk("user/logIn", async (userInfo: any) => {
     throw new Error(putResponse.statusText);
   }
 
+  // Because the random user id may be larger than the available number of users,
+  // modulo the user id to get a valid user id
+  const getUsersResponse = await fetch(`${REACT_APP_MOCKUP_API}/users`);
+  const users = await getUsersResponse.json();
+  user.userId = user.userId % (users.length - 3) + 3;
+
   // Get user data based on the id
   const getResponse = await fetch(
     `${REACT_APP_MOCKUP_API}/user/${user.userId}`

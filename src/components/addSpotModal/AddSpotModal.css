@@ -12,13 +12,38 @@
 }
 
 .add-spot-modal-container {
-  width: 20%;
-  height: 60%;
+  width: 50%;
+  height: 70%;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+
+@media (max-width: 900px) {
+  .add-spot-modal-container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 800px) {
+  .add-spot-modal-container {
+    width: 95%;
+  }
+}
+
+@media (max-height: 900px) {
+  .add-spot-modal-container {
+    height: 90%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .add-spot-modal-container {
+    width: 30%;
+    height: 60%;
+  }
 }
 
 .add-spot-modal-content {
@@ -59,28 +84,28 @@
 }
 
 .month-row {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
 
 .month-row > input {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    width: 45%;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  width: 45%;
 
-    color: rgba(0, 0, 0, 0.87);
-    border: none;
-    outline: none;
-    border-bottom: 2px solid #c7c7cc;
+  color: rgba(0, 0, 0, 0.87);
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #c7c7cc;
 }
 
 .month-row > input:focus {
-    border-bottom: 2px solid #007aff;
+  border-bottom: 2px solid #007aff;
 }
 
 .add-spot-modal-buttons {
@@ -102,7 +127,7 @@
   text-align: center;
   letter-spacing: 0.5px;
   border: none;
-  background: #FFF;
+  background: #fff;
 }
 
 .cancel {

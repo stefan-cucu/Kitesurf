@@ -11,7 +11,6 @@ export interface IFilter {
   probability: number;
   setCountry: (country: string) => void;
   setProbability: (probability: number) => void;
-  setFiltered: (filtered: boolean) => void;
 }
 
 const Filter: React.FC<IFilter> = (props) => {
@@ -39,7 +38,6 @@ const Filter: React.FC<IFilter> = (props) => {
               className="filter-btn-close"
               onClick={() => {
                 setFilterToggle(false);
-                props.setFiltered(false);
               }}
             >
               x
@@ -62,9 +60,12 @@ const Filter: React.FC<IFilter> = (props) => {
             />
             <button
               className="filter-btn"
-              onClick={() => props.setFiltered(true)}
+              onClick={() => {
+                props.setCountry("");
+                props.setProbability(0);
+              }}
             >
-              Apply Filter
+              Clear Filter
             </button>
           </div>
         )

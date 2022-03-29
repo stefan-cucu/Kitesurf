@@ -4,6 +4,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Spot, getSpots } from "../../store/Spot";
+import { useWindowSize } from "../../Hooks";
 import arrowImg from "../../assets/arrowhead.png";
 import arrowOnImg from "../../assets/arrowhead-on.png";
 import "./Table.css";
@@ -26,7 +27,9 @@ export interface TableProps {
 
 const Table: React.FC<TableProps> = (props) => {
   let spots = useSelector(getSpots);
-  const nrPages = Math.ceil(spots.length / 10);
+  const windowSize = useWindowSize();
+  const nrRowsPerWindow = windowSize.height < 1200 ? 5 : 10;
+  const nrPages = Math.ceil(spots.length / nrRowsPerWindow);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [sortColumn, setSortColumn] = React.useState("name");
   const [sortDirection, setSortDirection] = React.useState("asc");
@@ -47,7 +50,7 @@ const Table: React.FC<TableProps> = (props) => {
             : -1;
         }
       })
-      .slice(currentPage * 10 - 10, currentPage * 10);
+      .slice(currentPage * nrRowsPerWindow - nrRowsPerWindow, currentPage * nrRowsPerWindow);
   };
   return (
     <div className="table-container">

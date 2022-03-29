@@ -25,8 +25,8 @@ const options = {
 
 // Map styles
 const mapStyle = {
-  width: "90%", // props.width
-  height: "30%", // props.height,
+  width: "90%", 
+  height: "30%", 
 };
 
 // Props type for the AddSpotModal component

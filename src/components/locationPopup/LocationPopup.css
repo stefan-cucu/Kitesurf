@@ -17,20 +17,21 @@
 }
 
 .location-popup-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .location-popup-title > button {
-    outline: none;
-    border: none;
-    background: none;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
 
-    color: #9B9B9B;
-    font-size: 25px;
-    font-weight: 500;
+  color: #9b9b9b;
+  font-size: 25px;
+  font-weight: 500;
 }
 
 .location-popup-title-left {
@@ -69,7 +70,7 @@
 }
 
 .location-popup-body {
-    width: 90%;
+  width: 90%;
 }
 
 .location-popup-row > h2 {
@@ -107,6 +108,7 @@
   margin: 0;
   background: #e8b100;
   outline: none;
+  cursor: pointer;
   border: none;
 
   font-family: "Roboto";
@@ -123,9 +125,58 @@
 }
 
 .location-popup-button > p {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .location-popup-button.favorite {
-    background: #FF3B30;
+  background: #ff3b30;
+}
+
+@media (max-width: 450px) {
+  .location-popup {
+    width: 92px;
+    height: 300px;
+  }
+  .location-popup-title > button {
+    font-size: 15px;
+  }
+  .location-popup-title-left > h1 {
+    font-size: 15px;
+    max-width: 35px;
+  }
+  .location-popup-title-left > img {
+    margin-left: 6px;
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+  }
+  .location-popup-country {
+    font-size: 12px;
+  }
+  .location-popup-row > h2 {
+    font-size: 9.8px;
+    line-height: 11.6px;
+    margin-top: 12.2px;
+    margin-bottom: 0px;
+  }
+  .location-popup-row > h2 {
+    font-size: 9.8px;
+    line-height: 11.6px;
+    margin-top: 12.2px;
+  }
+
+  .location-popup-row > span {
+    font-size: 12.2px;
+    line-height: 14.11px;
+  }
+
+  .location-popup-button {
+    height: 30.6px;
+    font-size: 9.8px;
+    line-height: 11.65px;
+  }
+
+  .location-popup-button > p {
+    font-size: 9.8px;
+  }
 }

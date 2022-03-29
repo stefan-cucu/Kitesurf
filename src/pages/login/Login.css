@@ -1,3 +1,7 @@
+.login-page {
+    height: 100vh;
+}
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -45,4 +49,11 @@
     font-weight: 600;
     font-size: 1.2rem;
     line-height: 5px;
+}
+
+@media only screen 
+  and (max-device-width: 736px)  { 
+    .login-container input {
+        width: 300px;
+    }
 }
