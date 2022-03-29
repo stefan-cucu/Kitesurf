@@ -25,7 +25,7 @@ const options = {
 // Map styles
 const mapStyle = {
   width: "1400px", // props.width
-  height: "1000px", // props.height,
+  height: "600px", // props.height,
 };
 
 const Map: React.FC = (props) => {
