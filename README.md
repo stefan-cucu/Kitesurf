@@ -1,9 +1,9 @@
-<h1 align="center"> 
+<p align="center"> 
     <img width="15%"  src="https://icon-library.com/images/surfing-icon/surfing-icon-4.jpg">
-    <strong>
+    <h1 align="center">
         Kitesurf
-    </strong>
-</h1>
+    </h1>
+</p>
 <p align="center"> 
     Web platform for discovering new kitesurfing destinations
     <br> 
